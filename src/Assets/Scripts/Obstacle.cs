@@ -18,6 +18,9 @@ public class Obstacle : MonoBehaviour
         //Time since level loaded.
         initTime = Time.timeSinceLevelLoad;
 
+        // 크기 2배로 늘리기
+        transform.localScale = new Vector3(2, 2, 1);
+
         ///////CHEAT CODES///////////
         //Sets renderer materials to random INDP material if the cheat is activated
         if (GameObject.FindGameObjectWithTag("CheatCodeManager").GetComponent<CheatCodes>().indpSkinActive)
