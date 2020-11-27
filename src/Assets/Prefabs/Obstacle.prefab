@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3207899853384131454}
   - component: {fileID: 114860966759070348}
   m_Layer: 0
-  m_Name: InfiniteObstacle
+  m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,10 +56,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15168edcff349254ba419b2b70856ee1, type: 2}
+  - {fileID: 2100000, guid: ba63c3d28d2a75945a14f159abca197b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67,6 +68,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -105,3 +107,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTime: 5
+  textures:
+  - {fileID: 2800000, guid: 2c2ee4841f9dcd544be8381ba6a97a17, type: 3}
+  - {fileID: 2800000, guid: 4ec13200cbeca0a42adbb6a421fd394a, type: 3}
+  - {fileID: 2800000, guid: 786a4cfe949f74445b2f7d210a99ed2e, type: 3}
+  - {fileID: 2800000, guid: 4038993c3cc3cda468d3ada2bc315ac8, type: 3}
+  - {fileID: 2800000, guid: 6f87c5ae096ee2a4a92a5f7f6ca60069, type: 3}
+  - {fileID: 2800000, guid: 25508bfd751f7aa44b10315c7817f3d6, type: 3}
+  - {fileID: 2800000, guid: 1e7d6dccd2f30784cb8f13089aeec485, type: 3}
+  - {fileID: 2800000, guid: 17837da22db3e6c4b84598425c6a5f73, type: 3}
+  - {fileID: 2800000, guid: 5009279c2761f4a4cb4a4ebedd7da517, type: 3}
+  - {fileID: 2800000, guid: c8057c0e8ea178e46a80f3b135ee3a33, type: 3}
+  - {fileID: 2800000, guid: dd5821326a5dde14fab2f8bed29c2b1f, type: 3}
+  - {fileID: 2800000, guid: 6dd9b0ca67c8d5141b61cba533f310fc, type: 3}
+  - {fileID: 2800000, guid: 0f8aae5ab0173a9489d2c3c2f5d73944, type: 3}
+  - {fileID: 2800000, guid: c2d8cb5dff2af9a46b641c320ca14f21, type: 3}
+  - {fileID: 2800000, guid: 488b1b9801fe9dc4093f45b2d0250c82, type: 3}
+  - {fileID: 2800000, guid: 54d41ecbe90fed94fb9fbeb4e6e5bba3, type: 3}
+  - {fileID: 2800000, guid: 468994c717019ed46bc012efe42839d4, type: 3}
+  - {fileID: 2800000, guid: ca05f9af63a61a64faace690ead1a54f, type: 3}
+  - {fileID: 2800000, guid: aedc61f5424ee6644a871554df99e5fd, type: 3}
+  - {fileID: 2800000, guid: 2cb55a07302e9e0429319a0c25059f1a, type: 3}
