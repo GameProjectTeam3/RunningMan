@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour
         initTime = Time.timeSinceLevelLoad;
 
         // 크기 2배로 늘리기
-        transform.localScale = new Vector3(2, 2, 1);
+        transform.localScale = new Vector3(2, 2, 2);
 
         ///////CHEAT CODES///////////
         //Sets renderer materials to random INDP material if the cheat is activated

@@ -7,9 +7,15 @@ public class CheatCodes : MonoBehaviour
     //Materials to use when INDP cheat code is active.
     public Material[] indpMat;
 
+    //무작위로 선택할 텍스쳐 배열
+    public Texture[] textures;
+
     //Cheat codes reset after restart.
     private void Start()
     {
+        //int idx = Random.Range(0, textures.Length);
+        ////차일드 게임오브젝트의 MeshRenderer 컴포넌트를 하나만 가져옴
+        //GetComponentInChildren<MeshRenderer>().material.mainTexture = textures[idx];
     }
 
     // Update is called once per frame
