@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     //A number indicating player position. -1 Left. 0 Middle. 1 Right.
     public int positionIndex;
 
-    public float movementSpeed = 35;
+    public float movementSpeed = 100;
 
     //Used by smoothdamp.
     public float smoothSpeed = 0.1f;
@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     {
         //When the game ends, the timescale is set to 0. This is done to make sure it doesnt stop running.
         Time.timeScale = 1;
+
+        blockMovement = false;
 
         ////RUN90 CHEAT CODE//////
         if (GameObject.FindGameObjectWithTag("CheatCodeManager").GetComponent<CheatCodes>().run90Enabled)
@@ -52,45 +54,52 @@ public class Player : MonoBehaviour
         {
             //Move the player forward.
             transform.Translate(transform.forward * -movementSpeed * Time.deltaTime);
-        }
 
-        //Control position index. The lane is based on this.
-        //Control right movement.
-        if (Input.GetButtonDown("Right") && !blockInput)
-        {
-            positionIndex++;
-        }
-        //Control left movement.
-        if (Input.GetButtonDown("Left") && !blockInput)
-        {
-            positionIndex--;
-        }
+            //Control position index. The lane is based on this.
+            //Control right movement.
+            if (Input.GetButtonDown("Right") && !blockInput)
+            {
+                positionIndex++;
+            }
+            //Control left movement.
+            if (Input.GetButtonDown("Left") && !blockInput)
+            {
+                positionIndex--;
+            }
 
-        //Reset position index if it is out of bounds.
-        if (positionIndex > 1)
-        {
-            positionIndex = 1;
-        }
-        if (positionIndex < -1)
-        {
-            positionIndex = -1;
-        }
+            //Reset position index if it is out of bounds.
+            if (positionIndex > 1)
+            {
+                positionIndex = 1;
+            }
+            if (positionIndex < -1)
+            {
+                positionIndex = -1;
+            }
 
-        //Set player x position based on index.
+            //Set player x position based on index.
 
-        //Move the player with a bit of a delay to the desired lane.
-        //Left
-        if (positionIndex == -1) { transform.position = Vector3.SmoothDamp(transform.position, 
-            new Vector3(left.position.x, transform.position.y, transform.position.z), ref velocity, smoothSpeed); }
+            //Move the player with a bit of a delay to the desired lane.
+            //Left
+            if (positionIndex == -1)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position,
+new Vector3(left.position.x, transform.position.y, transform.position.z), ref velocity, smoothSpeed);
+            }
 
-        //Right
-        if (positionIndex == 1) { transform.position = Vector3.SmoothDamp(transform.position,
-            new Vector3(right.position.x, transform.position.y, transform.position.z), ref velocity, smoothSpeed);
-        }
+            //Right
+            if (positionIndex == 1)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position,
+new Vector3(right.position.x, transform.position.y, transform.position.z), ref velocity, smoothSpeed);
+            }
 
-        //Middle
-        if (positionIndex == 0) { transform.position = Vector3.SmoothDamp(transform.position,
-            new Vector3(middle.position.x, transform.position.y, transform.position.z), ref velocity, smoothSpeed);
+            //Middle
+            if (positionIndex == 0)
+            {
+                transform.position = Vector3.SmoothDamp(transform.position,
+new Vector3(middle.position.x, transform.position.y, transform.position.z), ref velocity, smoothSpeed);
+            }
         }
 
         //CHEAT CODES//

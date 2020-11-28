@@ -28,12 +28,14 @@ public class MapGenerator : MonoBehaviour
 
     //Assures the coroutine isnt ran every frame.
     public bool canSpawn = true;
+    public bool blockMovement;
 
     // Start is called before the first frame update
     void Start()
     {
         //Make sure it runs properly.
         canSpawn = true;
+        blockMovement = false;
 
         //Grab player data
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -49,7 +51,10 @@ public class MapGenerator : MonoBehaviour
         }
 
         //Move the player forward.
-        plane.transform.Translate(transform.forward * -player.movementSpeed * Time.deltaTime);
+        if (!blockMovement)
+        {
+            plane.transform.Translate(transform.forward * -player.movementSpeed * Time.deltaTime);
+        }
     }
 
     //Create lane and return the object.
