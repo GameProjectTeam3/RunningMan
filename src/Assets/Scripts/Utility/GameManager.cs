@@ -7,23 +7,27 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     //UI elements
-    public TextMeshProUGUI scoreText;
+    //public TextMeshProUGUI stageText;
     public GameObject endGamePanel;
-    public TextMeshProUGUI endGameScoreText;
+    public GameObject problemPanel;
+    //public TextMeshProUGUI endGameScoreText;
+    public TextMeshProUGUI problemText;
+    public TMP_InputField answer_Input; // = GetComponent<TMP_InputField>();
 
     //Score variable.
     private float score;
 
     //Game is over.
     private bool endGame;
+
     // Update is called once per frame
     void Update()
     {
         //Increment score. +1 score a second.
-        score += 1 * Time.deltaTime;
+        //score += 1 * Time.deltaTime;
 
         //Cast the float to make reading the score easier.
-        scoreText.text = "SCORE: " + (int)score;
+        //scoreText.text = "SCORE: " + (int)score;
 
         //Reset spawn and map when distance gets too large.
         if (GameObject.FindGameObjectWithTag("Player").transform.position.z < -10000)
@@ -41,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //stageText.setActive(true);
+        
         //If they restart the game, it should set this to false.
         endGame = false;
     }
@@ -50,8 +56,8 @@ public class GameManager : MonoBehaviour
     {
         //Turn on the UI and remove the scoretext in the top left corner.
         endGamePanel.SetActive(true);
-        scoreText.gameObject.SetActive(false);
-        endGameScoreText.text = "FINAL SCORE: " + (int)score;
+        //scoreText.gameObject.SetActive(false);
+        //endGameScoreText.text = "FINAL SCORE: " + (int)score;
 
         //Stops player movement but allows GUI and key input.
         Time.timeScale = 0;

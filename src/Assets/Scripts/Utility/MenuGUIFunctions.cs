@@ -16,13 +16,7 @@ public class MenuGUIFunctions : MonoBehaviour
     {
         Application.Quit();
     }
-
-    //Opens my github.
-    public void OpenGithub()
-    {
-        Application.OpenURL("https://github.com/westonmcnamara");
-    }
-
+    
     public void OpenMainMenu()
     {
         Time.timeScale = 1;
