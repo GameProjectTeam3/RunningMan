@@ -9,10 +9,7 @@ public class GameManager : MonoBehaviour
     //UI elements
     //public TextMeshProUGUI stageText;
     public GameObject endGamePanel;
-    public GameObject problemPanel;
-    //public TextMeshProUGUI endGameScoreText;
-    public TextMeshProUGUI problemText;
-    public TMP_InputField answer_Input; // = GetComponent<TMP_InputField>();
+    public GameObject clearGamePanel;
 
     //Score variable.
     private float score;
@@ -51,17 +48,26 @@ public class GameManager : MonoBehaviour
         endGame = false;
     }
     
-    //Ran from OnTriggerEnter() from any obstacle colliding with the Player.
-    public void EndGame()
+    public void ClearGame()
     {
         //Turn on the UI and remove the scoretext in the top left corner.
-        endGamePanel.SetActive(true);
+        clearGamePanel.SetActive(true);
         //scoreText.gameObject.SetActive(false);
         //endGameScoreText.text = "FINAL SCORE: " + (int)score;
 
         //Stops player movement but allows GUI and key input.
         Time.timeScale = 0;
         
+        //Allows after game input checking.
+        endGame = true;
+    }
+
+    public void EndGame()
+    {
+        endGamePanel.SetActive(true);
+        //Stops player movement but allows GUI and key input.
+        Time.timeScale = 0;
+
         //Allows after game input checking.
         endGame = true;
     }

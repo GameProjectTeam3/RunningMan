@@ -46,9 +46,11 @@ public class Obstacle : MonoBehaviour
         //If the block detects a collision from the player tag, end the game.
         if (other.tag == "Player")
         {
+            //Player player = GameObject.Find("Player").GetComponent<Player>();
+            //player.
             //Requires tag.
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
-            Debug.Log("Game Over");
+            //GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
+            //Debug.Log("Game Over");
         }
     }
 }

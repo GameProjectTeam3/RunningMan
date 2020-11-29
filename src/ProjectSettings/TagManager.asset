@@ -8,9 +8,10 @@ TagManager:
   - GameManager
   - Map
   - CheatCodeManager
-  - ProblemPanel
   - StageText
   - ProgressBar
+  - ClearGamePanel
+  - ProcessorBar
   layers:
   - Default
   - TransparentFX

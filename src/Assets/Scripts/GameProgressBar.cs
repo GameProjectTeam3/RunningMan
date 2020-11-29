@@ -6,43 +6,45 @@ using UnityEngine.UI;
 public class GameProgressBar : MonoBehaviour
 {
     public Slider progressBar;
-    public Slider processorBar;
 
     public float playerValue;
-    public float processorValue;
     public float maxValue;
     public float playerTime;
-    public float processorTime;
+    public float playerSpeed;
+
+    private ProcessorBar processor;
 
     // Start is called before the first frame update
     void Start()
     {
         maxValue = progressBar.maxValue;
-
         playerValue = progressBar.value;
-        processorValue = processorBar.value;
-
-        Debug.Log(maxValue);
+        playerSpeed = 1.5f;
+        processor = GameObject.Find("ProcessorBar").GetComponent<ProcessorBar>();
     }
 
     // Update is called once per frame
     void Update()
     {
         playerTime += Time.deltaTime;
-        processorTime += Time.deltaTime;
 
         if (playerTime > 0.1f)
         {
-            progressBar.value += 1.5f;
+            progressBar.value += playerSpeed;
             playerTime = 0f;
             playerValue = progressBar.value;
         }
 
-        if(processorTime > 0.05f)
+        if (playerValue == maxValue) // Game Clear
         {
-            processorBar.value += 1.0f;
-            processorTime = 0f;
-            processorValue = processorBar.value;
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().ClearGame();
+            Debug.Log("Game Clear");
+        }
+
+        if (playerValue == processor.processorValue)  //Game End
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
+            Debug.Log("Game End");
         }
     }
 }
