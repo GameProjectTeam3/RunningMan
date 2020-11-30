@@ -20,10 +20,6 @@ public class MenuGUIFunctions : MonoBehaviour
     public void OpenMainMenu()
     {
         Time.timeScale = 1;
-
-        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().setStagetoOne();
-        Debug.Log("stage num : " + GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().getStage());
-
         SceneManager.LoadScene("MainMenu");
     }
 

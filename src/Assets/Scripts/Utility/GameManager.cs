@@ -10,18 +10,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI stageText;
     public TextMeshProUGUI scoreText;
     public GameObject endGamePanel;
-    public GameObject problemPanel;
-    public TextMeshProUGUI endGameScoreText;
-    public TextMeshProUGUI problemText;
-    public TMP_InputField answer_Input; // = GetComponent<TMP_InputField>();
+    public GameObject clearGamePanel;
 
     //Score variable.
     private float score;
     public static int stage = 1;
 
     //Game is over.
-    private bool endGame;
     private static bool clearStage = false;
+    private bool endGame;
 
     // Update is called once per frame
     void Update()
@@ -46,7 +43,6 @@ public class GameManager : MonoBehaviour
             GameObject.Find("MenuGUIFunctions").GetComponent<MenuGUIFunctions>().ReloadThisLevel();
         }
 
-
         if ((int)score == 5)
         {
             clearStage = true;
@@ -58,28 +54,37 @@ public class GameManager : MonoBehaviour
     {
         //If they restart the game, it should set this to false.
         endGame = false;
-        GameObject.FindGameObjectWithTag("Obstacle").GetComponent<Obstacle>().setCollisionNumZero();
-        Debug.Log("collision number " + GameObject.FindGameObjectWithTag("Obstacle").GetComponent<Obstacle>().getCollisionNum());
+
         if (clearStage)
         {
             stage++;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed *= stage;
             clearStage = false;
         }
+
         Debug.Log("player speed " + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
-
     }
-
-    //Ran from OnTriggerEnter() from any obstacle colliding with the Player.
-    public void EndGame()
+    
+    public void ClearGame()
     {
         //Turn on the UI and remove the scoretext in the top left corner.
+        clearGamePanel.SetActive(true);
+        scoreText.gameObject.SetActive(false);
+        stageText.gameObject.SetActive(false);
+        //endGameScoreText.text = "FINAL SCORE: " + (int)score;
+
+        //Stops player movement but allows GUI and key input.
+        Time.timeScale = 0;
+        
+        //Allows after game input checking.
+        endGame = true;
+    }
+
+    public void EndGame()
+    {
         endGamePanel.SetActive(true);
         scoreText.gameObject.SetActive(false);
         stageText.gameObject.SetActive(false);
-        endGameScoreText.text = "FINAL SCORE: " + (int)score;
-
-
         //Stops player movement but allows GUI and key input.
         Time.timeScale = 0;
 
