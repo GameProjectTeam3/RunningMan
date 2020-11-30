@@ -6,6 +6,8 @@ using UnityEngine;
 //Uses a timestamp method to destroy the object after player zooms by it.
 public class Obstacle : MonoBehaviour
 {
+    public static int collisionNumber = 0;
+
     //Time until the obstacle is destroyed.
     public float deathTime = 5.0f;
 
@@ -46,9 +48,26 @@ public class Obstacle : MonoBehaviour
         //If the block detects a collision from the player tag, end the game.
         if (other.tag == "Player")
         {
+            collisionNumber++;
             //Requires tag.
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
-            Debug.Log("Game Over");
+            if (collisionNumber >= 3)
+            {
+                GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
+                collisionNumber = 0;
+            }
+
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed += 3;
+            Debug.Log("speed increased" + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
         }
+    }
+
+    public void setCollisionNumZero()
+    {
+        collisionNumber = 0;
+    }
+
+    public int getCollisionNum()
+    {
+        return collisionNumber;
     }
 }
