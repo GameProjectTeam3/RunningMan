@@ -12,11 +12,22 @@ public class Obstacle : MonoBehaviour
     //Used to keep track of time since creation.
     private float initTime;
 
+    //무작위로 선택할 텍스쳐 배열
+    public Texture[] textures;
+
     // Start is called before the first frame update
     void Start()
     {
         //Time since level loaded.
         initTime = Time.timeSinceLevelLoad;
+
+        // 조건으로 0-5, 6-13, 14-19 주면 랜덤 텍스쳐링 가능
+        int idx = Random.Range(0, textures.Length);
+        //차일드 게임오브젝트의 MeshRenderer 컴포넌트를 하나만 가져옴
+        GetComponentInChildren<MeshRenderer>().material.mainTexture = textures[idx];
+
+        // 크기 2배로 늘리기
+        transform.localScale = new Vector3(2, 2, 2);
 
         ///////CHEAT CODES///////////
         //Sets renderer materials to random INDP material if the cheat is activated
