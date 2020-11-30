@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed *= stage;
             clearStage = false;
         }
-        //Debug.Log("player speed " + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
+        Debug.Log("player speed " + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
 
     }
 
