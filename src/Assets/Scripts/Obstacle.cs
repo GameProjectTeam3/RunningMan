@@ -21,8 +21,24 @@ public class Obstacle : MonoBehaviour
         //Time since level loaded.
         initTime = Time.timeSinceLevelLoad;
 
-        // 조건으로 0-5, 6-13, 14-19 주면 랜덤 텍스쳐링 가능
-        int idx = Random.Range(0, textures.Length);
+        int stage = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().getStage();
+        int idx;
+
+        if (stage == 1)
+        {
+            idx = Random.Range(0, 5);
+        }
+        else if (stage == 2)
+        {
+            idx = Random.Range(6, 13);
+        }
+        else
+        {
+            idx = Random.Range(14, 19);
+        }
+
+        //// 조건으로 0-5, 6-13, 14-19 주면 랜덤 텍스쳐링 가능
+        //int idx = Random.Range(0, textures.Length);
         //차일드 게임오브젝트의 MeshRenderer 컴포넌트를 하나만 가져옴
         GetComponentInChildren<MeshRenderer>().material.mainTexture = textures[idx];
 
