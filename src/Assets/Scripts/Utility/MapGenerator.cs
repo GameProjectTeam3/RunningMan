@@ -53,7 +53,7 @@ public class MapGenerator : MonoBehaviour
         //Move the player forward.
         if (!blockMovement)
         {
-            plane.transform.Translate(transform.forward * -player.movementSpeed * Time.deltaTime);
+            plane.transform.Translate(transform.forward * -player.movementSpeed * player.playerSpeedValue * Time.deltaTime);
         }
     }
 
@@ -147,7 +147,7 @@ public class MapGenerator : MonoBehaviour
             player.transform.position.z - spawnDistance));
 
         //Wait for the spawnrate, and then allow the coroutine to run again.
-        yield return new WaitForSeconds(spawnRate);
+        yield return new WaitForSeconds(spawnRate * (1 / player.playerSpeedValue));
         canSpawn = true;
     }
 }

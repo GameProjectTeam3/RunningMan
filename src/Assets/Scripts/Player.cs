@@ -128,4 +128,9 @@ new Vector3(middle.position.x, transform.position.y, transform.position.z), ref 
             playerSpeedValue = 1f;
         }
     }
+
+    public float GetPlayerSpeed()
+    {
+        return playerSpeedValue;
+    }
 }

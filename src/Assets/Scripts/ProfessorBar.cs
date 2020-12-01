@@ -16,7 +16,7 @@ public class ProfessorBar : MonoBehaviour
     void Start()
     {
         maxValue = professorBar.maxValue;
-        professorSpeed = 1.0f;  // round 3 = 1.3f
+        professorSpeed = 1.8f + (GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().getStage() - 1) * 0.2f;
     }
 
     // Update is called once per frame
@@ -35,5 +35,11 @@ public class ProfessorBar : MonoBehaviour
     public float GetProfessorValue()
     {
         return professorValue;
+    }
+
+    public void ResetProfessorBar()
+    {
+        professorBar.value = 0f;
+        professorValue = -1.0f;
     }
 }
