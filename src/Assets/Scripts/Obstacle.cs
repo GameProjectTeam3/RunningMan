@@ -74,6 +74,11 @@ public class Obstacle : MonoBehaviour
         if (other.tag == "Player")
         {
             //GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed > 10)
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed -= 10;
+            else
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed = 10;
+
             Debug.Log("speed increased" + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
         }
     }

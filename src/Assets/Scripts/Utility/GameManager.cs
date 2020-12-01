@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     //UI elements
     public TextMeshProUGUI stageText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI nextStageText;
     public GameObject endGamePanel;
     public GameObject clearGamePanel;
+    public GameObject clearStagePanel;
 
     //Score variable.
     private float score;
@@ -43,10 +45,10 @@ public class GameManager : MonoBehaviour
             GameObject.Find("MenuGUIFunctions").GetComponent<MenuGUIFunctions>().ReloadThisLevel();
         }
 
-        if ((int)score == 5)
+        if ((int)score == 15)
         {
             clearStage = true;
-            EndGame();
+            ClearGame();
         }
     }
 
@@ -54,6 +56,9 @@ public class GameManager : MonoBehaviour
     {
         //If they restart the game, it should set this to false.
         endGame = false;
+
+        if (stage == 3)
+            setStagetoOne();
 
         if (clearStage)
         {
@@ -64,23 +69,41 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("player speed " + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
     }
-    
-    public void ClearGame()
-    {
-        //Turn on the UI and remove the scoretext in the top left corner.
-        clearGamePanel.SetActive(true);
-        scoreText.gameObject.SetActive(false);
-        stageText.gameObject.SetActive(false);
-        //endGameScoreText.text = "FINAL SCORE: " + (int)score;
 
-        //Stops player movement but allows GUI and key input.
-        Time.timeScale = 0;
-        
-        //Allows after game input checking.
-        endGame = true;
+    public void ClearGame()     //clear stage
+    {
+        if (stage == 3)
+        {
+            //Turn on the UI and remove the scoretext in the top left corner.
+            clearGamePanel.SetActive(true);
+            //clearStagePanel.SetActive(false);
+            scoreText.gameObject.SetActive(false);
+            stageText.gameObject.SetActive(false);
+            //endGameScoreText.text = "FINAL SCORE: " + (int)score;
+
+            //Stops player movement but allows GUI and key input.
+            Time.timeScale = 0;
+            
+            //Allows after game input checking.
+            endGame = true;
+        }
+        else
+        {
+            clearStagePanel.SetActive(true);
+            scoreText.gameObject.SetActive(false);
+            stageText.gameObject.SetActive(false);
+            nextStageText.text = "NEXT STAGE : " + (int)(stage + 1);
+            //endGameScoreText.text = "FINAL SCORE: " + (int)score;
+
+            //Stops player movement but allows GUI and key input.
+            Time.timeScale = 0;
+
+            //Allows after game input checking.
+            endGame = true;
+        }
     }
 
-    public void EndGame()
+    public void EndGame()   //caught
     {
         endGamePanel.SetActive(true);
         scoreText.gameObject.SetActive(false);
@@ -88,6 +111,7 @@ public class GameManager : MonoBehaviour
         //Stops player movement but allows GUI and key input.
         Time.timeScale = 0;
 
+        setStagetoOne();
         //Allows after game input checking.
         endGame = true;
     }

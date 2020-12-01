@@ -34,6 +34,7 @@ public class GameProgressBar : MonoBehaviour
 
         if (playerValue == maxValue) // Game Clear
         {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().setStagetoOne();
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().ClearGame();
             Debug.Log("Game Clear");
         }

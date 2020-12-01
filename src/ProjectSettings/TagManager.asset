@@ -13,6 +13,7 @@ TagManager:
   - ClearGamePanel
   - ScoreText
   - ProfessorBar
+  - NextStageText
   layers:
   - Default
   - TransparentFX
