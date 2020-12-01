@@ -49,6 +49,16 @@ public class GameProgressBar : MonoBehaviour
         }
     }
 
+    public bool GetIsStageClear()
+    {
+        return isStageClear;
+    }
+
+    public void SetIsStageClear(bool isClear)
+    {
+        isStageClear = isClear;
+    }
+
     public void ResetProgressBar(float professorSpeed)
     {
         progressBar.value = 0f;

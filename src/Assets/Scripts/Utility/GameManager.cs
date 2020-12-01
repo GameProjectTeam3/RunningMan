@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             GameObject.Find("MenuGUIFunctions").GetComponent<MenuGUIFunctions>().ReloadThisLevel();
         }
 
-        if ((int)score == 15)
+        if (GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<GameProgressBar>().GetIsStageClear())
         {
             clearStage = true;
             ClearGame();
@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
             nextStageText.text = "NEXT STAGE : " + (int)(stage + 1);
             //endGameScoreText.text = "FINAL SCORE: " + (int)score;
 
+            GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<GameProgressBar>().SetIsStageClear(false);
             GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<GameProgressBar>().ResetProgressBar(1.5f);
 
             //Stops player movement but allows GUI and key input.
