@@ -611,6 +611,7 @@ MonoBehaviour:
   left: {fileID: 996267192}
   positionIndex: 0
   movementSpeed: 35
+  playerSpeedValue: 1
   smoothSpeed: 0.1
   indpMat: {fileID: 2100000, guid: 2714dde111e33d24fa614606e0dadd32, type: 2}
 --- !u!54 &456716056
@@ -2580,8 +2581,8 @@ GameObject:
   - component: {fileID: 1560319256}
   - component: {fileID: 1560319257}
   m_Layer: 5
-  m_Name: Processor Bar
-  m_TagString: ProcessorBar
+  m_Name: Professor Bar
+  m_TagString: ProfessorBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2670,10 +2671,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e877794d3931f5742b8154594cdc61df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  processorBar: {fileID: 1560319256}
-  processorValue: 0
-  processorSpeed: 0
-  processorTime: 0
+  professorBar: {fileID: 1560319256}
+  professorValue: -1
+  professorSpeed: 0
+  professorTime: 0
 --- !u!1 &1646308015
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     //A number indicating player position. -1 Left. 0 Middle. 1 Right.
     public int positionIndex;
 
-    public float movementSpeed = 100;
+    public float movementSpeed = 100f;
+    public float playerSpeedValue = 1f;
 
     //Used by smoothdamp.
     public float smoothSpeed = 0.1f;
@@ -53,7 +54,7 @@ public class Player : MonoBehaviour
         if (!blockMovement)
         {
             //Move the player forward.
-            transform.Translate(transform.forward * -movementSpeed * Time.deltaTime);
+            transform.Translate(transform.forward * -movementSpeed * playerSpeedValue * Time.deltaTime);
 
             //Control position index. The lane is based on this.
             //Control right movement.
@@ -116,4 +117,15 @@ new Vector3(middle.position.x, transform.position.y, transform.position.z), ref 
         }
     }
 
+    public void SetPlayerSpeed(bool isSlowPlayer)
+    {
+        if (isSlowPlayer)
+        {
+            playerSpeedValue = 0.5f;
+        }
+        else
+        {
+            playerSpeedValue = 1f;
+        }
+    }
 }

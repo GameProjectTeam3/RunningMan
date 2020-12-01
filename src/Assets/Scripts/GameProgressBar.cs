@@ -12,15 +12,12 @@ public class GameProgressBar : MonoBehaviour
     public float playerTime;
     public float playerSpeed;
 
-    private ProcessorBar processor;
-
     // Start is called before the first frame update
     void Start()
     {
         maxValue = progressBar.maxValue;
         playerValue = progressBar.value;
         playerSpeed = 1.5f;
-        processor = GameObject.Find("ProcessorBar").GetComponent<ProcessorBar>();
     }
 
     // Update is called once per frame
@@ -41,10 +38,10 @@ public class GameProgressBar : MonoBehaviour
             Debug.Log("Game Clear");
         }
 
-        if (playerValue == processor.processorValue)  //Game End
+        if (playerValue == GameObject.FindGameObjectWithTag("ProfessorBar").GetComponent<ProfessorBar>().professorValue)  //Game End
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
-            Debug.Log("Game End");
+            // Debug.Log("Game End");
         }
     }
 }

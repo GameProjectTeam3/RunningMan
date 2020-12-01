@@ -11,8 +11,8 @@ TagManager:
   - StageText
   - ProgressBar
   - ClearGamePanel
-  - ProcessorBar
   - ScoreText
+  - ProfessorBar
   layers:
   - Default
   - TransparentFX
