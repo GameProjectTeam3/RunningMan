@@ -73,13 +73,19 @@ public class Obstacle : MonoBehaviour
         //If the block detects a collision from the player tag, end the game.
         if (other.tag == "Player")
         {
-            //GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().
-            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed > 10)
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed -= 10;
-            else
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed = 10;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetPlayerSpeed(true);
+            GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<GameProgressBar>().SetProgressBarValue(true);
+            StartCoroutine("timerCoroutine");
 
-            Debug.Log("speed increased" + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
+            Debug.Log("speed decreased" + GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed);
         }
+    }
+
+    IEnumerator timerCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetPlayerSpeed(false);
+        GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<GameProgressBar>().SetProgressBarValue(false);
     }
 }

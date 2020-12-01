@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         if (clearStage)
         {
             stage++;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed *= stage;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementSpeed *= stage;
             clearStage = false;
         }
 
@@ -94,6 +94,8 @@ public class GameManager : MonoBehaviour
             stageText.gameObject.SetActive(false);
             nextStageText.text = "NEXT STAGE : " + (int)(stage + 1);
             //endGameScoreText.text = "FINAL SCORE: " + (int)score;
+
+            GameObject.FindGameObjectWithTag("ProgressBar").GetComponent<GameProgressBar>().ResetProgressBar(1.5f);
 
             //Stops player movement but allows GUI and key input.
             Time.timeScale = 0;

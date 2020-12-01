@@ -12,12 +12,15 @@ public class GameProgressBar : MonoBehaviour
     public float playerTime;
     public float playerSpeed;
 
+    public bool isStageClear;
+
     // Start is called before the first frame update
     void Start()
     {
         maxValue = progressBar.maxValue;
         playerValue = progressBar.value;
-        playerSpeed = 1.5f;
+        playerSpeed = 3.0f;
+        isStageClear = false;
     }
 
     // Update is called once per frame
@@ -34,15 +37,34 @@ public class GameProgressBar : MonoBehaviour
 
         if (playerValue == maxValue) // Game Clear
         {
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().setStagetoOne();
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().ClearGame();
-            Debug.Log("Game Clear");
+            Debug.Log("player value = " + playerValue);
+            isStageClear = true;
         }
 
-        if (playerValue == GameObject.FindGameObjectWithTag("ProfessorBar").GetComponent<ProfessorBar>().professorValue)  //Game End
+        if (playerValue == GameObject.FindGameObjectWithTag("ProfessorBar").GetComponent<ProfessorBar>().professorValue)  // Game End
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().EndGame();
-            // Debug.Log("Game End");
+            Debug.Log("player value = " + playerValue + "professor value = " + GameObject.FindGameObjectWithTag("ProfessorBar").GetComponent<ProfessorBar>().professorValue);
+        }
+    }
+
+    public void ResetProgressBar(float professorSpeed)
+    {
+        progressBar.value = 0f;
+        playerValue = progressBar.value;
+        GameObject.FindGameObjectWithTag("ProfessorBar").GetComponent<ProfessorBar>().ResetProfessorBar(professorSpeed);
+    }
+
+    public void SetProgressBarValue(bool isSlowPlayer)
+    {
+        if (isSlowPlayer)
+        {
+            playerSpeed = 1.5f;
+        }
+        else
+        {
+            playerSpeed = 3.0f;
         }
     }
 }
