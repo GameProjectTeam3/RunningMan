@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
         Direct
     }
 
-    [SerializeField] public float movementSpeed = 20f;
-    public float playerSpeedValue = 3;
+    public float movementSpeed = 30f;
+    public float playerSpeedValue = 1;
     [SerializeField] private float m_turnSpeed = 200;
     [SerializeField] private float m_jumpForce = 4;
 
@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1;
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
     }
@@ -197,6 +198,7 @@ public class Player : MonoBehaviour
         }
 
         JumpingAndLanding();
+
     }
 
     private void JumpingAndLanding()
@@ -220,17 +222,22 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetPlayerSpeed(bool isSlowPlayer){
-        if (isSlowPlayer){
+
+    public void SetPlayerSpeed(bool isSlowPlayer)
+    {
+        if (isSlowPlayer)
+        {
             playerSpeedValue = 0.5f;
         }
-        else{
+        else
+        {
             playerSpeedValue = 1f;
         }
-        
+
     }
 
-    public float GetPlayerSpeed(){
+    public float GetPlayerSpeed()
+    {
         return playerSpeedValue;
     }
 }

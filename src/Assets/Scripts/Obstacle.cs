@@ -43,7 +43,7 @@ public class Obstacle : MonoBehaviour
         GetComponentInChildren<MeshRenderer>().material.mainTexture = textures[idx];
 
         // 크기 2배로 늘리기
-        transform.localScale = new Vector3(2, 2, 2);
+        transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
 
         ///////CHEAT CODES///////////
         //Sets renderer materials to random INDP material if the cheat is activated

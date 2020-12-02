@@ -80,13 +80,13 @@ public class MapGenerator : MonoBehaviour
             obstacle2.transform.SetParent(parent.transform);
 
             //Midchecks are needed to prevent players from spamming left and right to dodge objects.
-            /*
+            
             GameObject midCheck1;
             //Spawn midChecks if at left
             if (midCheckRange == 0)
             {
                 midCheck1 = Instantiate(_obstacle, new Vector3(midCheckLeft.transform.position.x,
-                                       pos.y + 0.5f,
+                                       pos.y + 1f,
                                        pos.z), Quaternion.identity);
             }
 
@@ -94,10 +94,9 @@ public class MapGenerator : MonoBehaviour
             if (midCheckRange == 1)
             {
                 midCheck1 = Instantiate(_obstacle, new Vector3(midCheckRight.transform.position.x,
-                                        pos.y + 0.5f,
+                                        pos.y + 1f,
                                         pos.z), Quaternion.identity);
             }
-            */
         }
         else   //If the objects are the same index only spawn one to reinforce randomness.
         {
@@ -118,19 +117,19 @@ public class MapGenerator : MonoBehaviour
     {
         //Right
         if (index == 1) { GameObject obstacle = Instantiate(_obstacle, new Vector3(right.transform.position.x, 
-            pos.y + 0.5f,
+            pos.y + 1f,
             pos.z), Quaternion.identity); return obstacle;
         }
 
         //Left
         if (index == -1) { GameObject obstacle = Instantiate(_obstacle, new Vector3(left.transform.position.x,
-            pos.y + 0.5f,
+            pos.y + 1f,
             pos.z), Quaternion.identity); return obstacle;
         }
 
         //Middle
         if (index == 0) { GameObject obstacle = Instantiate(_obstacle, new Vector3(middle.transform.position.x,
-            pos.y + 0.5f,
+            pos.y + 1f,
             pos.z), Quaternion.identity); return obstacle;
         }
         return null;
