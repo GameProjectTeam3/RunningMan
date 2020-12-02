@@ -44,18 +44,6 @@ public class Obstacle : MonoBehaviour
 
         // 크기 2배로 늘리기
         transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
-
-        ///////CHEAT CODES///////////
-        //Sets renderer materials to random INDP material if the cheat is activated
-        if (GameObject.FindGameObjectWithTag("CheatCodeManager").GetComponent<CheatCodes>().indpSkinActive)
-        {
-            //Random int to choose what skin the obstacle has
-            int rand = Random.Range(0, 8);
-
-            //Set material to corresponding number.
-            GetComponent<Renderer>().material = GameObject.FindGameObjectWithTag("CheatCodeManager").GetComponent<CheatCodes>().indpMat[rand];
-        }
-        ////////////////////////////
     }
 
     private void Update()
