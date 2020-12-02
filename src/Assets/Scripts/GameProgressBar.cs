@@ -27,14 +27,15 @@ public class GameProgressBar : MonoBehaviour
     void Update()
     {
         playerTime += Time.deltaTime;
-
-        if (playerTime > 0.1f)
-        {
-            progressBar.value += playerSpeed;
-            playerTime = 0f;
-            playerValue = progressBar.value;
+        
+        if(Input.GetKey(KeyCode.UpArrow)){
+            if (playerTime > 0.1f)
+            {
+                progressBar.value += playerSpeed;
+                playerTime = 0f;
+                playerValue = progressBar.value;
+            }
         }
-
         if (playerValue == maxValue) // Game Clear
         {
             GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().ClearGame();

@@ -11,6 +11,7 @@ public class ProfessorBar : MonoBehaviour
     public float professorValue = -1.0f;
     public float professorSpeed;
     public float professorTime;
+    bool startDelay = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +24,19 @@ public class ProfessorBar : MonoBehaviour
     void Update()
     {
         professorTime += Time.deltaTime;
-
-        if (professorTime > 0.1f)
-        {
-            professorBar.value += professorSpeed;
-            professorTime = 0f;
-            professorValue = professorBar.value;
+        if(startDelay){
+            if(professorTime > 1.5f){
+                startDelay = false;
+                professorTime = 0f;
+            }
+        }
+        else{
+            if (professorTime > 0.1f)
+            {
+                professorBar.value += professorSpeed;
+                professorTime = 0f;
+                professorValue = professorBar.value;
+            }
         }
     }
 
@@ -39,6 +47,7 @@ public class ProfessorBar : MonoBehaviour
 
     public void ResetProfessorBar()
     {
+        startDelay = true;
         professorBar.value = 0f;
         professorValue = -1.0f;
     }
